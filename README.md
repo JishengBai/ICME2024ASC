@@ -2,7 +2,7 @@
 # Semi-supervised Acoustic Scene Classification under Domain Shift
 
 ## Dataset
-The development and evaluation datasets will be released in [zenodo](https://zenodo.org/records/10373987) when the challenge starts.
+The development and evaluation datasets will be released in [zenodo](https://zenodo.org/records/10558800) when the challenge starts.
 
 ## Challenge website
 [ICME2024 GC](https://2024.ieeeicme.org/grand-challenge-proposals/)  
