@@ -19,9 +19,9 @@ Step 2: Download ICME2024 ASC GC development dataset
 Step 3: set paths and parameters in `config.py`  
 Step 4: `python feature_extraction.py`  
 Step 5: `python train.py`  
-Step 6: Download ICME2024 ASC GC evaluation dataset
-Step 7: set paths and parameters in config.py
-Step 8: `python feature_extraction.py`
+Step 6: Download ICME2024 ASC GC evaluation dataset  
+Step 7: set paths and parameters in config.py  
+Step 8: `python feature_extraction.py`  
 Step 9: `python test.py`
 
 ## Cite
