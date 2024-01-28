@@ -145,17 +145,4 @@ class CAS_unlabel_Dataset(object):
         
         return loader
 
-# For Debug
-if __name__ == '__main__':
-    
-    dev_meta_csv = pd.read_csv(config.dev_meta_csv_path, index_col=False)
-    dev_meta_csv = dev_meta_csv.sample(frac=1)
-    train_num = int(len(dev_meta_csv)*config.train_val_ratio)
-    train_meta_csv = dev_meta_csv[:train_num]
-    val_meta_csv = dev_meta_csv[train_num:]
-    
-    train_dataset = CAS_Dev_Dataset(config, train_meta_csv, True)
-    train_dataloader = train_dataset.get_tensordataset()
-    train_unlabeled_dataset = CAS_unlabel_Dataset(config, train_meta_csv, "dev")
-
         
