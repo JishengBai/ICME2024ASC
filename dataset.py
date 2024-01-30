@@ -3,7 +3,7 @@
 """
 @author: Jisheng Bai, Han Yin, Mou Wang, Haohe Liu
 @email: baijs@mail.nwpu.edu.cn
-# Joint Laboratory of Environmental Sound Sensing, School of Marine Science and Technology, Northwestern Polytechnical University, Xi’an, China
+# Joint Laboratory of Environmental Sound Sensing, School of Marine Science and Technology, Northwestern Polytechnical University, Xi'an, China
 # Xi'an Lianfeng Acoustic Technologies Co., Ltd., China
 # University of Surrey, UK
 # This software is distributed under the terms of the License MIT
@@ -20,7 +20,12 @@ from torch.utils.data import DataLoader, TensorDataset
 
 class CAS_Dev_Dataset(object):
     def __init__(self, data_config, data_csv, is_train:bool):
+        '''
+        :param data_config: configuration module
+        :param data_csv: metadata dataframe
+        :param is_train: True/False for training/validation data
         
+        '''
         self.stats_csv = data_csv
         self.root_path = data_config.dev_fea_root_path
         self.selected_scene_list = data_config.selected_scene_list
@@ -84,7 +89,12 @@ class CAS_Dev_Dataset(object):
 
 class CAS_unlabel_Dataset(object):
     def __init__(self, data_config, data_csv, fold):
+        '''
+        :param data_config: configuration module
+        :param data_csv: metadata dataframe
+        :param fold: "dev"/"eval" for development/evaluation set
         
+        '''
         self.stats_csv = data_csv
         if fold=="dev":
             self.root_path = data_config.dev_fea_root_path

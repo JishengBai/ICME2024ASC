@@ -3,7 +3,7 @@
 """
 @author: Jisheng Bai, Han Yin, Mou Wang, Haohe Liu
 @email: baijs@mail.nwpu.edu.cn
-# Joint Laboratory of Environmental Sound Sensing, School of Marine Science and Technology, Northwestern Polytechnical University, Xi’an, China
+# Joint Laboratory of Environmental Sound Sensing, School of Marine Science and Technology, Northwestern Polytechnical University, Xi'an, China
 # Xi'an Lianfeng Acoustic Technologies Co., Ltd., China
 # University of Surrey, UK
 # This software is distributed under the terms of the License MIT
@@ -61,15 +61,8 @@ def init_gru(rnn):
 class ConvBlock(nn.Module):
     def __init__(self, in_channels, out_channels):
         '''
-        Parameters
-        ----------
-        in_channels : int, input channels.
-        out_channels : int, output channels.
-
-        Returns
-        -------
-        None.
-
+        param in_channels: the number of input channels
+        param out_channels: the number of out channels
         '''
         super(ConvBlock, self).__init__()
         
@@ -115,6 +108,9 @@ class ConvBlock(nn.Module):
     
 class SELayer(nn.Module):
     def __init__(self, channel, reduction=16):
+        '''
+        param channel: the number of input channels
+        '''
         super(SELayer, self).__init__()
         self.avg_pool = nn.AdaptiveAvgPool2d(1)
         self.fc = nn.Sequential(
@@ -134,15 +130,8 @@ class SELayer(nn.Module):
 class SEBlock(nn.Module):
     def __init__(self, in_channels, out_channels):
         '''
-        Parameters
-        ----------
-        in_channels : int, input channels.
-        out_channels : int, output channels.
-
-        Returns
-        -------
-        None.
-
+        param in_channels: the number of input channels
+        param out_channels: the number of out channels
         '''
         super(SEBlock, self).__init__()
         
@@ -194,16 +183,13 @@ class SE_Trans(nn.Module):
                  class_num, \
                  nhead, dim_feedforward, n_layers, dropout):
         '''
-        Parameters
-        ----------
-        in_chs : int, input channels.
-        chs_list : list of int, channels of each block.
-        bins : int, input feature bins.
-        
-        Returns
-        -------
-        None.
-
+        param frames: the number of input frames
+        param bins: the number of input frequency bins
+        param class_num: the number of categories
+        param nhead: the number of heads in the multiheadattention models
+        param dim_feedforward: the dimension of FFN
+        param n_layers: the number of Transformer Encoder Layers
+        param dropout: dropout rate
         '''
         super(SE_Trans, self).__init__()
 
@@ -226,14 +212,8 @@ class SE_Trans(nn.Module):
         
     def forward(self, x, spec_aug = False):
         '''
-        Parameters
-        ----------
-        x : torch.Tensor, input tensor(logmel), shape = [batch, in_chs, frames, bins].
-
-
-        Returns
-        -------
-        x : torch.Tensor, output tensor, shape = [batch, out_chs, frames', bins'].
+        x: input tensor
+        spec_aug: True/False for specaugment/no specaugment
         '''
         
         if spec_aug:
@@ -272,8 +252,8 @@ class ModelTrainer(object):
         :param model: torch model
         :param criterion: training loss function
         :param device: 'cpu' 'cuda1' 'cuda2'....
-        :param valid_metric: 评价指标函数
-        :param optimizer: 优化器
+        :param valid_metric: evaluation function
+        :param optimizer: training optimizer
         '''
         self.device = device
         self.model = model.to(self.device)
@@ -289,16 +269,14 @@ class ModelTrainer(object):
             exp_path,
             model_file_name,
             early_stopping,):
-        """
+        '''
         :param train_data: torch.uitls.data.dataset
         :param valid_data: torch.uitls.data.dataset
-        :param epochs: number of epoch
-        :param save_path: the path of saved model
+        :param epochs: the number of epoch
+        :param exp path: the path of saved experimental outputs 
+        :param model_file_name: model parameters file name
         :param early_stopping: the number of epoch to trigger early stopping
-        :param bar:
-        :param augments:
-        :return:
-        """
+        '''
         best_metric, best_epoch = 0, 0
         count = 0
         print('== Training start ==')
@@ -328,7 +306,9 @@ class ModelTrainer(object):
     def train_epoch(self,
                     train_data,
                     ):
-
+        '''
+        :param train_data: dataloader of training data
+        '''
         nb_train_batches, train_loss = 0, 0.
         self.model.train()
         with tqdm(total=len(train_data)) as pbar:
@@ -354,7 +334,9 @@ class ModelTrainer(object):
         return train_loss
 
     def val_epoch(self, valid_data):
-
+        '''
+        :param valid_data: dataloader of validation data
+        '''
         self.model.eval()
         with torch.no_grad() and tqdm(total=len(valid_data)) as pbar:
             for i, (data, target) in enumerate(valid_data):
@@ -381,8 +363,8 @@ class ModelTester(object):
                  ):
         '''
         :param model: torch model
+        :param test_data: dataloader of test data
         :param device: 'cpu' 'cuda1' 'cuda2'....
-
         '''
         self.device = device
         self.model = model.to(self.device)

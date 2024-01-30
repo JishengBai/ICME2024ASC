@@ -3,7 +3,7 @@
 """
 @author: Jisheng Bai, Han Yin, Mou Wang, Haohe Liu
 @email: baijs@mail.nwpu.edu.cn
-# Joint Laboratory of Environmental Sound Sensing, School of Marine Science and Technology, Northwestern Polytechnical University, Xi’an, China
+# Joint Laboratory of Environmental Sound Sensing, School of Marine Science and Technology, Northwestern Polytechnical University, Xi'an, China
 # Xi'an Lianfeng Acoustic Technologies Co., Ltd., China
 # University of Surrey, UK
 # This software is distributed under the terms of the License MIT
@@ -22,12 +22,18 @@ import torchmetrics
 
 
 def setup_seed(seed):
+     '''
+     :param seed: random seed
+     '''
      torch.manual_seed(seed)
      torch.cuda.manual_seed_all(seed)
      np.random.seed(seed)
      torch.backends.cudnn.deterministic = True
 
 def train(config):
+    '''
+    :param config: configuration module
+    '''
     os.makedirs(config.output_path, exist_ok=True)
     if os.path.exists(os.path.join(config.output_path, "best_model_1.pth")):
         print('========== First model exists ==========')
@@ -54,6 +60,7 @@ def train(config):
                      n_layers=config.n_layers, dropout=config.dropout)
     
     model = model.to(config.device)
+    # print(torch.__version__)
     ckpt = torch.load(config.pretrained_model_path)
     ckpt["model_state_dict"].pop("fc.weight")
     ckpt["model_state_dict"].pop("fc.bias")
@@ -71,6 +78,9 @@ def train(config):
     
 
 def pseudo_labeling(config):
+    '''
+    :param config: configuration module
+    '''
     train_meta_csv_path = os.path.join(config.output_path, "train_meta.csv")
     val_meta_csv_path = os.path.join(config.output_path, "val_meta.csv")
     if not (os.path.exists(train_meta_csv_path) or os.path.exists(val_meta_csv_path)):
@@ -127,6 +137,9 @@ def pseudo_labeling(config):
     val_meta_csv.to_csv(os.path.join(config.output_path, "val_meta_pse_labeled.csv"), index=False)
     
 def train_pse(config):
+    '''
+    :param config: configuration module
+    '''
     os.makedirs(config.output_path, exist_ok=True)
     if os.path.exists(os.path.join(config.output_path, "best_model_2.pth")):
         print('========== Second model exists ==========')

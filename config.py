@@ -3,7 +3,7 @@
 """
 @author: Jisheng Bai, Han Yin, Mou Wang, Haohe Liu
 @email: baijs@mail.nwpu.edu.cn
-# Joint Laboratory of Environmental Sound Sensing, School of Marine Science and Technology, Northwestern Polytechnical University, Xi’an, China
+# Joint Laboratory of Environmental Sound Sensing, School of Marine Science and Technology, Northwestern Polytechnical University, Xi'an, China
 # Xi'an Lianfeng Acoustic Technologies Co., Ltd., China
 # University of Surrey, UK
 # This software is distributed under the terms of the License MIT

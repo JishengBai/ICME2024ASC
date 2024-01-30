@@ -3,7 +3,7 @@
 """
 @author: Jisheng Bai, Han Yin, Mou Wang, Haohe Liu
 @email: baijs@mail.nwpu.edu.cn
-# Joint Laboratory of Environmental Sound Sensing, School of Marine Science and Technology, Northwestern Polytechnical University, Xi’an, China
+# Joint Laboratory of Environmental Sound Sensing, School of Marine Science and Technology, Northwestern Polytechnical University, Xi'an, China
 # Xi'an Lianfeng Acoustic Technologies Co., Ltd., China
 # University of Surrey, UK
 # This software is distributed under the terms of the License MIT
@@ -17,12 +17,18 @@ from dataset import CAS_unlabel_Dataset
 from models.baseline import SE_Trans, ModelTester
 
 def setup_seed(seed):
+     '''
+     :param seed: random seed
+     '''
      torch.manual_seed(seed)
      torch.cuda.manual_seed_all(seed)
      np.random.seed(seed)
      torch.backends.cudnn.deterministic = True
 
 def gen_result(config):
+    '''
+    :param config: configuration module
+    '''
     print('========== Generate eval result ==========')
     os.makedirs(config.output_path, exist_ok=True)
     if not os.path.exists(os.path.join(config.output_path, "best_model_1.pth")):

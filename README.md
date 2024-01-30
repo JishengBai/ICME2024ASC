@@ -1,5 +1,4 @@
-# Baseline for IEEE ICME 2024 Grand Challenge
-# Semi-supervised Acoustic Scene Classification under Domain Shift
+# Baseline for IEEE ICME 2024 Grand Challenge: Semi-supervised Acoustic Scene Classification under Domain Shift
 
 ## Dataset
 The development and evaluation datasets will be released in [zenodo](https://zenodo.org/records/10558800) when the challenge starts.
@@ -26,7 +25,12 @@ Step 9: `python test.py`
 
 ## Cite
 
-
+## Organization
+1. Northwestern Polytechnical University, China
+1. Xi'an Lianfeng Acoustic Technologies Co., Ltd., China
+1. Nanyang Technological University, Singapore
+1. Institute of Acoustics, Chinese Academy of Sciences, China
+1. University of Surrey, UK
 
 
 

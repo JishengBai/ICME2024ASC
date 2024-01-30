@@ -3,7 +3,7 @@
 """
 @author: Jisheng Bai, Han Yin, Mou Wang, Haohe Liu
 @email: baijs@mail.nwpu.edu.cn
-# Joint Laboratory of Environmental Sound Sensing, School of Marine Science and Technology, Northwestern Polytechnical University, Xi’an, China
+# Joint Laboratory of Environmental Sound Sensing, School of Marine Science and Technology, Northwestern Polytechnical University, Xi'an, China
 # Xi'an Lianfeng Acoustic Technologies Co., Ltd., China
 # University of Surrey, UK
 # This software is distributed under the terms of the License MIT
@@ -20,23 +20,15 @@ import glob
 
 def gen_mel_features(data, sr, n_fft, hop_length, win_length, n_mels, fmin, fmax, window='hann', logarithmic=True):
     '''
-    Generate log_mel spectrogram
-    
-    Parameters
-    ----------
-    data : np.array, input signal.
-    sr : int, sample rate.
-    n_fft : int, fft samples.
-    hop_length : int, frame move samples.
-    win_length : int, window length.
-    n_mels : int, number of mel bands.  shape = [n_mels, frames]
-    fmin : int, minimum frequency.
-    fmax : int, maximum frequency.
-    window : str, window type. The default is 'hann'.
-
-    Returns
-    -------
-    log_mel, np.array, log_mel spectrogram. shape =[frames, mel_bands]
+    :param data: input waveform
+    :param sr: sampling rate
+    :param n_fft: FFT samples
+    :param hop_length: frame move samples
+    :param win_length: window length
+    :param n_mels: number of mel bands
+    :param fmin: minimum frequency
+    :param fmax: maximum frequency
+    :param window: window type
 
     '''  
     eps = np.spacing(1)
@@ -64,6 +56,10 @@ def gen_mel_features(data, sr, n_fft, hop_length, win_length, n_mels, fmin, fmax
     return log_mel_spectrogram.T
 
 def save_features(config, fold):
+    '''
+    :param config: configuration module
+    :param fold: "dev"/"eval" for development/evaluation set
+    '''
     print('========== Generate Feature for {} =========='.format(fold))
     if os.path.exists(config.audio_root_path):
         if fold == "dev":
@@ -79,6 +75,7 @@ def save_features(config, fold):
             for index, row in meta_csv.iterrows():
                 filename = row["filename"]
                 filepath_str = os.path.join(config.audio_root_path, '*'+filename+'*.wav')
+                # print(glob.glob(filepath_str))
                 audio_path = glob.glob(filepath_str)[0]
                 audio, _ = librosa.load(audio_path, sr=config.sample_rate)
                 
