@@ -331,33 +331,33 @@ class ModelTrainer(object):
 
         nb_train_batches, train_loss = 0, 0.
         self.model.train()
-        loader = tqdm(train_data)
-        for i, (data, target) in enumerate(loader):
-            # load one batch of data
-            data, target = data.to(self.device), \
-                           target.to(self.device)
-            self.optimizer.zero_grad()
-            data = data.reshape(data.shape[0], -1, data.shape[1], data.shape[2])
-            outputs = self.model(data)
-            
-            loss = self.criterion(outputs, target)
-            loss.backward()
-            self.optimizer.step()
-            train_loss += loss.item()
-            nb_train_batches += 1
-        
-        self.scheduler.step()
-        train_loss /= nb_train_batches
+        with tqdm(total=len(train_data)) as pbar:
+            for i, (data, target) in enumerate(train_data):
+                # load one batch of data
+                data, target = data.to(self.device), \
+                               target.to(self.device)
+                self.optimizer.zero_grad()
+                data = data.reshape(data.shape[0], -1, data.shape[1], data.shape[2])
+                outputs = self.model(data)
+                
+                loss = self.criterion(outputs, target)
+                loss.backward()
+                self.optimizer.step()
+                train_loss += loss.item()
+                nb_train_batches += 1
+                
+                pbar.update(1)
+                
+            self.scheduler.step()
+            train_loss /= nb_train_batches
         
         return train_loss
 
     def val_epoch(self, valid_data):
 
         self.model.eval()
-        loader = tqdm(valid_data)
-
-        with torch.no_grad():
-            for i, (data, target) in enumerate(loader):
+        with torch.no_grad() and tqdm(total=len(valid_data)) as pbar:
+            for i, (data, target) in enumerate(valid_data):
                 # load one batch of data
                 data, target = data.to(self.device), \
                                target.to(self.device)
@@ -367,6 +367,8 @@ class ModelTrainer(object):
                 output = torch.max(output, 1)[1]  
 
                 self.metric.update(output, target)
+                pbar.update(1)
+                
         score = self.metric.compute()
         
         return score
@@ -388,11 +390,10 @@ class ModelTester(object):
             
     def predict(self):
         self.model.eval()
-        loader = tqdm(self.test_data)
         output_arr = []
         print('== Testing start ==')
-        with torch.no_grad():
-            for i, (data, target) in enumerate(loader):
+        with torch.no_grad() and tqdm(total=len(self.test_data)) as pbar:
+            for i, (data, target) in enumerate(self.test_data):
 
                 # load one batch of data
 
@@ -405,7 +406,9 @@ class ModelTester(object):
                 output = output.cpu().numpy()
                 output = output.reshape(-1)
                 output_arr.append(output)
-
+                
+                pbar.update(1)
+                
         output_arr = np.asarray(output_arr, dtype=np.int32)
         
         return output_arr
