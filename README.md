@@ -1,14 +1,18 @@
 # Semi-supervised Acoustic Scene Classification under Domain Shift
 
-Baseline for IEEE ICME 2024 Grand Challenge
+Baseline for IEEE ICME 2024 Grand Challenge.
 
 This Challenge aims to push the boundaries of computational audition by tackling one of its most compelling problems: effectively classifying acoustic scenes under significant domain shifts.
 
-## Challenge website
+## Challenge Website
 [ICME2024 GC](https://2024.ieeeicme.org/grand-challenge-proposals/)  
 [Challenge website](https://ascchallenge.xshengyun.com/)
 
 ## Official Baseline
+
+**The baseline and dataset is under development and not ready yet.**
+
+**The organization team will finalize the dataset and code around 5th Feb 2024, please stay tuned for the update.**
 
 ![main](pics/main.jpg)
 
@@ -28,7 +32,7 @@ python3 setup_data.py
 # Our dataset is available on Zenodo: xxx.
 ```
 
-### Step3: Train and evaluate model
+### Step3: Train and Evaluate Model
 
 ```shell
 # Model training
