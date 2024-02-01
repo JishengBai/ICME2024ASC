@@ -22,7 +22,7 @@ pip install -r requirement.txt
 
 ### Step 2: Setup Dataset
 ```shell
-python3 data/datasetup.py
+python3 setup_data.py
 # Our dataset is available on Zenodo: xxx.
 ```
 

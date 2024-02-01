@@ -87,6 +87,11 @@ def save_features(config, fold):
         with tqdm(total=len(meta_csv)) as pbar:
             for index, row in meta_csv.iterrows():
                 filename = row["filename"]
+                feature_save_path = os.path.join(feature_root_path, filename + ".npy")
+                if os.path.exists(feature_save_path):
+                    pbar.update(1)
+                    continue
+                
                 filepath_str = os.path.join(
                     config.audio_root_path, "*" + filename + "*.wav"
                 )
@@ -104,8 +109,7 @@ def save_features(config, fold):
                     config.fmin,
                     config.fmax,
                 )
-
-                feature_save_path = os.path.join(feature_root_path, filename + ".npy")
+                
                 np.save(feature_save_path, feature, allow_pickle=True)
                 pbar.update(1)
                 # break
