@@ -1,13 +1,10 @@
 # Baseline for IEEE ICME 2024 Grand Challenge: Semi-supervised Acoustic Scene Classification under Domain Shift
 
-## Dataset
-The development and evaluation datasets will be released on [Zenodo](https://zenodo.org/records/10558800) when the challenge starts.
-
 ## Challenge website
 [ICME2024 GC](https://2024.ieeeicme.org/grand-challenge-proposals/)  
 [Challenge website](https://ascchallenge.xshengyun.com/)
 
-## Baseline
+## Official Baseline
 
 ### Step 1: Python Running Environment
 ```shell
@@ -19,7 +16,7 @@ pip install -r requirement.txt
 
 ### Step 2: Setup Dataset
 ```shell
-python3 datasetup.py
+python3 data/datasetup.py
 ```
 
 ### Step3: Train and evaluate model
@@ -33,6 +30,9 @@ python test.py
 ```
 
 ## Cite
+```bibtex
+coming soon
+```
 
 ## Organization
 - Northwestern Polytechnical University, China

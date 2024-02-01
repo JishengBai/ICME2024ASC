@@ -13,6 +13,5 @@ for url in dataset_url_zenodo:
             "data",
         )
 
-# Unzip zip files in the ./data folder, with os.system
 os.system("unzip data/*.zip -d data/")
-os.system("python3 feature_extraction.py")
+os.system("python3 data/feature_extraction.py")
