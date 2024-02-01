@@ -18,7 +18,6 @@ from tqdm import tqdm
 import torch
 from torch.utils.data import DataLoader, TensorDataset
 
-
 class CAS_Dev_Dataset(object):
     def __init__(self, data_config, data_csv, is_train: bool):
         """
@@ -69,7 +68,7 @@ class CAS_Dev_Dataset(object):
             label.append(lb)
 
         data = np.asarray(data)
-        label = np.asarray(label, dtype=np.int)
+        label = np.asarray(label, dtype=np.int32)
 
         return data, label
 
