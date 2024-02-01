@@ -35,12 +35,14 @@ python3 setup_data.py
 ### Step3: Train and Evaluate Model
 
 ```shell
-# Model training
+# Model training, which includes the following three steps:
+# (1) Training with limited labels; (2) Pseudo labeling; (3) Model training with pseudo labels.
 python train.py
 
 # Model testing
 python test.py
 ```
+You can find an example training log [here](https://github.com/JishengBai/ICME2024ASC/blob/main/data/example_train.log)
 
 ## Cite
 ```bibtex
