@@ -19,6 +19,6 @@ if not os.path.exists("data/ICME2024_GC_ASC_eval.zip") or os.path.getsize("data/
         "data",
     )
 
-os.system("unzip -n data/ICME2024_GC_ASC_dev.zip -d data/")
-os.system("unzip -n data/ICME2024_GC_ASC_eval.zip -d data/")
+os.system("unzip -n -q data/ICME2024_GC_ASC_dev.zip -d data/")
+os.system("unzip -n -q data/ICME2024_GC_ASC_eval.zip -d data/")
 os.system("python3 feature_extraction.py")

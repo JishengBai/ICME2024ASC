@@ -21,7 +21,9 @@ pip install -r requirement.txt
 ```  
 
 ### Step 2: Setup Dataset
+This step includes dataset download, unzip, and feature extraction. 
 ```shell
+# Takes about an hour
 python3 setup_data.py
 # Our dataset is available on Zenodo: xxx.
 ```
