@@ -10,7 +10,7 @@ This Challenge aims to push the boundaries of computational audition by tackling
 
 ## Official Baseline
 
-**The baseline and dataset is under development and not ready yet.**
+**The baseline and dataset are under development and not ready yet.**
 
 **The organization team will finalize the dataset and code around 5th Feb 2024, please stay tuned for the update.**
 
