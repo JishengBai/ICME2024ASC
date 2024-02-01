@@ -37,9 +37,10 @@ python3 setup_data.py
 ```shell
 # Model training, which includes the following three steps:
 # (1) Training with limited labels; (2) Pseudo labeling; (3) Model training with pseudo labels.
+# In total the training process takes about 30 minutes on a single NVIDIA 2080 Ti.
 python train.py
 
-# Model testing
+# Model testing.
 python test.py
 ```
 You can find an example training log [here](https://github.com/JishengBai/ICME2024ASC/blob/main/data/example_train.log)
