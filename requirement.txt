@@ -1,11 +1,6 @@
-librosa==0.8.0
-numba==0.52.0
-pandas==1.2.0
-scikit-learn==1.0.2
-scipy==1.6.0
-SoundFile==0.10.3.post1
-torch==1.13.1
-torchlibrosa==0.0.9
-torchmetrics==0.11.4
-tqdm==4.59.0
-
+torch
+librosa
+scipy
+numpy
+tqdm
+pandas

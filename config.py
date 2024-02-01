@@ -11,11 +11,11 @@
 
 # Paths
 exp_id = 1
-audio_root_path = ''
-dev_meta_csv_path = './metadata/ICME2024_ASC_dev_label_20240126.csv'
-dev_fea_root_path = './feature/train'
-eval_meta_csv_path = './metadata/ICME2024_ASC_eval_20240126.csv'
-eval_fea_root_path = './feature/eval'
+audio_root_path = 'data'
+dev_meta_csv_path = './data/ICME2024_ASC_dev_label.csv'
+dev_fea_root_path = './data/feature/train'
+eval_meta_csv_path = './data/ICME2024_ASC_eval.csv'
+eval_fea_root_path = './data/feature/eval'
 pretrained_model_path = './pretrained/best_model.pth'
 output_path = r'./exp_{}'.format(exp_id)
 
