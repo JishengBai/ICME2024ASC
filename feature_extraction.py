@@ -18,8 +18,20 @@ from tqdm import tqdm
 import pandas as pd
 import glob
 
-def gen_mel_features(data, sr, n_fft, hop_length, win_length, n_mels, fmin, fmax, window='hann', logarithmic=True):
-    '''
+
+def gen_mel_features(
+    data,
+    sr,
+    n_fft,
+    hop_length,
+    win_length,
+    n_mels,
+    fmin,
+    fmax,
+    window="hann",
+    logarithmic=True,
+):
+    """
     :param data: input waveform
     :param sr: sampling rate
     :param n_fft: FFT samples
@@ -30,37 +42,38 @@ def gen_mel_features(data, sr, n_fft, hop_length, win_length, n_mels, fmin, fmax
     :param fmax: maximum frequency
     :param window: window type
 
-    '''  
+    """
     eps = np.spacing(1)
-    if window=='hann':
+    if window == "hann":
         window = scipy.signal.hann(win_length, sym=False)
     else:
         window = scipy.signal.hamming(win_length, sym=False)
-    spectrogram = np.abs(librosa.stft(data + eps,
-                                          n_fft=n_fft,
-                                          win_length=win_length,
-                                          hop_length=hop_length,
-                                          center=True,
-                                          window=window))
-    mel_basis = librosa.filters.mel(
-            sr=sr,
+    spectrogram = np.abs(
+        librosa.stft(
+            data + eps,
             n_fft=n_fft,
-            n_mels=n_mels,
-            fmin=fmin,
-            fmax=fmax,
-            htk=False)
-    
-    mel_spectrogram = np.dot(mel_basis, spectrogram)      
+            win_length=win_length,
+            hop_length=hop_length,
+            center=True,
+            window=window,
+        )
+    )
+    mel_basis = librosa.filters.mel(
+        sr=sr, n_fft=n_fft, n_mels=n_mels, fmin=fmin, fmax=fmax, htk=False
+    )
+
+    mel_spectrogram = np.dot(mel_basis, spectrogram)
     log_mel_spectrogram = librosa.power_to_db(mel_spectrogram)
 
     return log_mel_spectrogram.T
 
+
 def save_features(config, fold):
-    '''
+    """
     :param config: configuration module
     :param fold: "dev"/"eval" for development/evaluation set
-    '''
-    print('========== Generate Feature for {} =========='.format(fold))
+    """
+    print("========== Generate Feature for {} ==========".format(fold))
     if os.path.exists(config.audio_root_path):
         if fold == "dev":
             meta_csv = pd.read_csv(config.dev_meta_csv_path)
@@ -70,33 +83,45 @@ def save_features(config, fold):
             feature_root_path = config.eval_fea_root_path
         os.makedirs(feature_root_path, exist_ok=True)
         # extract acoustic features
-        print('=== Extraction Begin ===')
+        print("=== Extraction Begin ===")
         with tqdm(total=len(meta_csv)) as pbar:
             for index, row in meta_csv.iterrows():
                 filename = row["filename"]
-                filepath_str = os.path.join(config.audio_root_path, '*'+filename+'*.wav')
+                feature_save_path = os.path.join(feature_root_path, filename + ".npy")
+                if os.path.exists(feature_save_path):
+                    pbar.update(1)
+                    continue
+                
+                filepath_str = os.path.join(
+                    config.audio_root_path, "*" + filename + "*.wav"
+                )
                 # print(glob.glob(filepath_str))
                 audio_path = glob.glob(filepath_str)[0]
                 audio, _ = librosa.load(audio_path, sr=config.sample_rate)
+
+                feature = gen_mel_features(
+                    audio,
+                    config.sample_rate,
+                    config.n_fft,
+                    config.hop_length,
+                    config.win_length,
+                    config.n_mels,
+                    config.fmin,
+                    config.fmax,
+                )
                 
-                feature = gen_mel_features(audio, config.sample_rate, config.n_fft, 
-                                           config.hop_length, config.win_length, 
-                                           config.n_mels, config.fmin, config.fmax)
-                
-                feature_save_path = os.path.join(feature_root_path, filename+'.npy')
                 np.save(feature_save_path, feature, allow_pickle=True)
                 pbar.update(1)
                 # break
-        print('========== End ==========')
+        print("========== End ==========")
     else:
-        print('========== {} dataset does not exist =========='.format(fold))
+        print("========== {} dataset does not exist ==========".format(fold))
 
-if __name__ == '__main__':
-    
+
+if __name__ == "__main__":
     import config
+
+    config.audio_root_path = "data/ICME2024_GC_ASC_dev"
     save_features(config, fold="dev")
+    config.audio_root_path = "data/ICME2024_GC_ASC_eval"
     save_features(config, fold="eval")
-
-
-
-

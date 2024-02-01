@@ -1,36 +1,58 @@
-# Baseline for IEEE ICME 2024 Grand Challenge: Semi-supervised Acoustic Scene Classification under Domain Shift
+# Semi-supervised Acoustic Scene Classification under Domain Shift
 
-## Dataset
-The development and evaluation datasets will be released in [zenodo](https://zenodo.org/records/10558800) when the challenge starts.
+Baseline for IEEE ICME 2024 Grand Challenge.
 
-## Challenge website
+This Challenge aims to push the boundaries of computational audition by tackling one of its most compelling problems: effectively classifying acoustic scenes under significant domain shifts.
+
+## Challenge Website
 [ICME2024 GC](https://2024.ieeeicme.org/grand-challenge-proposals/)  
 [Challenge website](https://ascchallenge.xshengyun.com/)
 
-## Run the code
-Step 1:  
-```
-conda create -n ASC python=3.7
+## Official Baseline
+
+**The baseline and dataset is under development and not ready yet.**
+
+**The organization team will finalize the dataset and code around 5th Feb 2024, please stay tuned for the update.**
+
+![main](pics/main.jpg)
+
+### Step 1: Python Running Environment
+```shell
+conda create -n ASC python=3.10
 conda activate ASC
+git clone git@github.com:JishengBai/ICME2024ASC.git; cd ICME2024ASC
 pip install -r requirement.txt
 ```  
-Step 2: Download ICME2024 ASC GC development dataset  
-Step 3: set paths and parameters in `config.py`  
-Step 4: `python feature_extraction.py`  
-Step 5: `python train.py`  
-Step 6: Download ICME2024 ASC GC evaluation dataset  
-Step 7: set paths and parameters in config.py  
-Step 8: `python feature_extraction.py`  
-Step 9: `python test.py`
+
+### Step 2: Setup Dataset
+This step includes dataset download, unzip, and feature extraction. 
+```shell
+# Takes about an hour
+python3 setup_data.py
+# Our dataset is available on Zenodo: xxx.
+```
+
+### Step3: Train and Evaluate Model
+
+```shell
+# Model training
+python train.py
+
+# Model testing
+python test.py
+```
 
 ## Cite
+```bibtex
+coming soon
+```
 
 ## Organization
-1. Northwestern Polytechnical University, China
-1. Xi'an Lianfeng Acoustic Technologies Co., Ltd., China
-1. Nanyang Technological University, Singapore
-1. Institute of Acoustics, Chinese Academy of Sciences, China
-1. University of Surrey, UK
+- Northwestern Polytechnical University, China
+- Xi'an Lianfeng Acoustic Technologies Co., Ltd., China
+- Nanyang Technological University, Singapore
+- Institute of Acoustics, Chinese Academy of Sciences, China
+- University of Surrey, UK
 
 
 
