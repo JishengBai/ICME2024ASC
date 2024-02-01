@@ -10,7 +10,7 @@ This Challenge aims to push the boundaries of computational audition by tackling
 
 ## Official Baseline
 
-![main](pics/Challenge_pipeline.bmp)
+![main](pics/main.jpg)
 
 ### Step 1: Python Running Environment
 ```shell
