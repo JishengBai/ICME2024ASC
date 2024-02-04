@@ -33,7 +33,7 @@ def gen_result(config):
     """
     print("========== Generate eval result ==========")
     os.makedirs(config.output_path, exist_ok=True)
-    if not os.path.exists(os.path.join(config.output_path, "best_model_1.pth")):
+    if not os.path.exists(os.path.join(config.output_path, "best_model_2.pth")):
         print("========== Second model does not exist ==========")
         return
     print("== Loading eval dataset ==")
@@ -53,7 +53,7 @@ def gen_result(config):
     )
 
     model = model.to(config.device)
-    ckpt = torch.load(os.path.join(config.output_path, "best_model_1.pth"))
+    ckpt = torch.load(os.path.join(config.output_path, "best_model_2.pth"))
     model.load_state_dict(ckpt["model_state_dict"])
     print("== Loading model params done ==")
 
@@ -64,7 +64,7 @@ def gen_result(config):
         eval_label_index = eval_results[index][0]
         eval_meta_csv.loc[index, "scene_label"] = config.index_2_class[eval_label_index]
 
-    eval_meta_csv_save_path = os.path.join(config.output_path, "eval_results_1.csv")
+    eval_meta_csv_save_path = os.path.join(config.output_path, "eval_results.csv")
     eval_meta_csv.to_csv(eval_meta_csv_save_path, index=False)
     print("== Saving eval results to {} ==".format(eval_meta_csv_save_path))
 

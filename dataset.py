@@ -109,7 +109,6 @@ class CAS_unlabel_Dataset(object):
             self.root_path = data_config.dev_fea_root_path
         else:
             self.root_path = data_config.eval_fea_root_path
-        self.selected_scene_list = data_config.selected_scene_list
         self.tar_sr = data_config.sample_rate
         self.batch_size = data_config.batch_size
         self.clip_frames = data_config.clip_frames
@@ -131,7 +130,6 @@ class CAS_unlabel_Dataset(object):
                 self.label_list.append(label_str)
             else:
                 continue
-        print(index)
 
     def get_numpy_dataset(self):
         data = []
