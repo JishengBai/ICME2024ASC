@@ -123,5 +123,5 @@ if __name__ == "__main__":
 
     config.audio_root_path = "data/ICME2024_GC_ASC_dev"
     save_features(config, fold="dev")
-    config.audio_root_path = "data/ICME2024_GC_ASC_eval"
-    save_features(config, fold="eval")
+    # config.audio_root_path = "data/ICME2024_GC_ASC_eval"
+    # save_features(config, fold="eval")
