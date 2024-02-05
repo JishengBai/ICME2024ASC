@@ -8,7 +8,7 @@ if not os.path.exists("data/ICME2024_GC_ASC_dev.zip") or os.path.getsize("data/I
     print("Downloading dev dataset from url: {}".format(url))
     urllib.request.urlretrieve(
         url,
-        "data",
+        "data/ICME2024_GC_ASC_dev.zip",
     )
 
 # if not os.path.exists("data/ICME2024_GC_ASC_eval.zip") or os.path.getsize("data/ICME2024_GC_ASC_eval.zip") < 694982408: # The eval dataset is 694982409
