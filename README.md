@@ -47,11 +47,13 @@ You can find an example training log [here](https://github.com/JishengBai/ICME20
 
 ## Cite
 ```bibtex
-@article{liu2023audioldm,
-  title={{AudioLDM}: Text-to-Audio Generation with Latent Diffusion Models},
-  author={Liu, Haohe and Chen, Zehua and Yuan, Yi and Mei, Xinhao and Liu, Xubo and Mandic, Danilo and Wang, Wenwu and Plumbley, Mark D},
-  journal={Proceedings of the International Conference on Machine Learning},
-  year={2023}
+@misc{bai2024description,
+      title={Description on IEEE ICME 2024 Grand Challenge: Semi-supervised Acoustic Scene Classification under Domain Shift}, 
+      author={Jisheng Bai and Mou Wang and Haohe Liu and Han Yin and Yafei Jia and Siwei Huang and Yutong Du and Dongzhe Zhang and Mark D. Plumbley and Dongyuan Shi and Woon-Seng Gan and Susanto Rahardja and Bin Xiang and Jianfeng Chen},
+      year={2024},
+      eprint={2402.02694},
+      archivePrefix={arXiv},
+      primaryClass={eess.AS}
 }
 ```
 ```bibtex
