@@ -47,8 +47,26 @@ You can find an example training log [here](https://github.com/JishengBai/ICME20
 
 ## Cite
 ```bibtex
-coming soon
+@article{liu2023audioldm,
+  title={{AudioLDM}: Text-to-Audio Generation with Latent Diffusion Models},
+  author={Liu, Haohe and Chen, Zehua and Yuan, Yi and Mei, Xinhao and Liu, Xubo and Mandic, Danilo and Wang, Wenwu and Plumbley, Mark D},
+  journal={Proceedings of the International Conference on Machine Learning},
+  year={2023}
+}
 ```
+```bibtex
+@ARTICLE{9951400,
+  author={Bai, Jisheng and Chen, Jianfeng and Wang, Mou and Ayub, Muhammad Saad and Yan, Qingli},
+  journal={IEEE Transactions on Cognitive and Developmental Systems}, 
+  title={A Squeeze-and-Excitation and Transformer-Based Cross-Task Model for Environmental Sound Recognition}, 
+  year={2023},
+  volume={15},
+  number={3},
+  pages={1501-1513},
+  keywords={Task analysis;Acoustics;Computational modeling;Speech recognition;Transformers;Pattern recognition;Computer architecture;Attention mechanism;cross-task model;data augmentation;environmental sound recognition (ESR)},
+  doi={10.1109/TCDS.2022.3222350}}
+```
+
 
 ## Organization
 - Northwestern Polytechnical University, China
