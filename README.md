@@ -29,7 +29,8 @@ This step includes dataset download, unzip, and feature extraction.
 ```shell
 # Takes about an hour
 python3 setup_data.py
-# Our dataset is available on Zenodo: xxx.
+# Our development dataset is available on Zenodo: https://zenodo.org/records/10616533.
+# Our evaluation dataset will be released on Mar 15, 2024.
 ```
 
 ### Step3: Train and Evaluate Model
@@ -49,7 +50,7 @@ You can find an example training log [here](https://github.com/JishengBai/ICME20
 ```bibtex
 @misc{bai2024description,
       title={Description on IEEE ICME 2024 Grand Challenge: Semi-supervised Acoustic Scene Classification under Domain Shift}, 
-      author={Jisheng Bai and Mou Wang and Haohe Liu and Han Yin and Yafei Jia and Siwei Huang and Yutong Du and Dongzhe Zhang and Mark D. Plumbley and Dongyuan Shi and Woon-Seng Gan and Susanto Rahardja and Bin Xiang and Jianfeng Chen},
+      author={Jisheng Bai and Mou Wang and Haohe Liu and Han Yin and Yafei Jia and Siwei Huang and Yutong Du and Dongzhe Zhang and Dongyuan Shi and Woon-Seng Gan and Mark D. Plumbley and Susanto Rahardja and Bin Xiang and Jianfeng Chen},
       year={2024},
       eprint={2402.02694},
       archivePrefix={arXiv},
