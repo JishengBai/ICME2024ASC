@@ -81,7 +81,7 @@ def train(config):
     )
     criterion = nn.CrossEntropyLoss()
     metric = torchmetrics.Accuracy(
-        task="multiclass", num_classes=len(config.class_2_index.keys())
+        task="multiclass", num_classes=len(config.class_2_index.keys(), average="macro")
     )
     trainer = ModelTrainer(
         model, criterion, config.device, metric, optimizer, scheduler
@@ -213,7 +213,7 @@ def train_pse(config):
     )
     criterion = nn.CrossEntropyLoss()
     metric = torchmetrics.Accuracy(
-        task="multiclass", num_classes=len(config.class_2_index.keys())
+        task="multiclass", num_classes=len(config.class_2_index.keys(), average="macro")
     )
     trainer = ModelTrainer(
         model, criterion, config.device, metric, optimizer, scheduler
