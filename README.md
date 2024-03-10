@@ -10,9 +10,14 @@ This Challenge aims to push the boundaries of computational audition by tackling
 [Development dataset](https://zenodo.org/records/10616533)  
 [Google groups](https://groups.google.com/g/icme2024-gc-asc)
 
-## Official Baseline
+## Updates
 
-**The challenge has started and links to the development dataset and registration are available.**
+**2024-FEB-05 The challenge has started and links to the development dataset and registration are available.**
+
+**2024-MAR-105 Update on train.py script to correct issue with calculating macro-average accuracy.**
+
+
+## Official Baseline
 
 ![main](pics/main.jpg)
 
