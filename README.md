@@ -7,8 +7,9 @@ This Challenge aims to push the boundaries of computational audition by tackling
 ## Challenge Website
 [ICME2024 GC](https://2024.ieeeicme.org/grand-challenge-proposals/)  
 [Challenge website](https://ascchallenge.xshengyun.com/)  
+[Google groups](https://groups.google.com/g/icme2024-gc-asc)  
 [Development dataset](https://zenodo.org/records/10616533)  
-[Google groups](https://groups.google.com/g/icme2024-gc-asc)
+[Evaluation dataset](https://zenodo.org/records/10820626)  
 
 ## Updates
 
