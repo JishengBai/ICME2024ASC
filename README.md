@@ -17,6 +17,7 @@ This Challenge aims to push the boundaries of computational audition by tackling
 
 **2024-MAR-10 Update on train.py script to correct issue with calculating macro-average accuracy.**
 
+**2024-MAR-15 The link to the evaluation dataset is available.**
 
 ## Official Baseline
 
